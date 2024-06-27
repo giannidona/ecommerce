@@ -1,0 +1,6 @@
+.main__section_bg {
+  background-image: url("../../../public/home-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 95vh;
+}

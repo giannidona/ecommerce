@@ -1,3 +1,5 @@
+import { Navbar } from "@/_components";
+
 export default function ShopLayout({
   children,
 }: {
@@ -5,7 +7,7 @@ export default function ShopLayout({
 }) {
   return (
     <div>
-      {/* {NAVBAR} */}
+      <Navbar />
       {children}
       {/* {FOOTER} */}
     </div>
