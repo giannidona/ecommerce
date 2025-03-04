@@ -1,8 +1,9 @@
-import { Collection } from "@/components";
+import { Collection, Newsletter } from "@/components";
 export default function Home() {
   return (
-    <h1 className="">
+    <>
       <Collection />
-    </h1>
+      <Newsletter />
+    </>
   );
 }
