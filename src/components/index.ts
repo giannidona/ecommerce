@@ -7,3 +7,6 @@ export { Footer } from "./ui/Footer";
 export { MainSection } from "./homepage/MainSection";
 export { Collection } from "./homepage/Collection";
 export { Newsletter } from "./homepage/Newsletter";
+
+// ADMIN DASHBOARD
+export { NavbarAdmin } from "./admin/Navbar";
