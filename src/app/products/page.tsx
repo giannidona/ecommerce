@@ -1,5 +1,12 @@
 import { Card } from "@/components";
-export default function PorductsPage() {
+
+export default async function PorductsPage() {
+  const res = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
   return (
     <div className="flex">
       <div className="mr-15">
@@ -7,10 +14,14 @@ export default function PorductsPage() {
         <div>Filter system</div>
       </div>
       <div className="grid grid-cols-4 gap-x-5">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data.data.map((prod) => (
+          <Card
+            key={prod.id}
+            prodName={prod.name}
+            prodPrice={prod.price}
+            prodTag={prod.tags}
+          />
+        ))}
       </div>
     </div>
   );

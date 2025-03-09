@@ -7,9 +7,8 @@ const supabase = createClient(
 );
 
 export async function POST(req: Request) {
-  const { name, description, price, stock, tags, images } = await req.json();
+  const { name, description, price, stock, tags } = await req.json();
 
-  // Validar los datos antes de hacer la inserción
   if (!name || !price || !stock) {
     return NextResponse.json(
       { error: "Missing required fields" },
@@ -17,7 +16,6 @@ export async function POST(req: Request) {
     );
   }
 
-  // Realizar la inserción en la tabla products
   const { data, error } = await supabase
     .from("products")
     .insert([
@@ -26,15 +24,21 @@ export async function POST(req: Request) {
         description,
         price,
         stock,
-        tags: tags.split(",").map((tag) => tag.trim()), // Convertir a array de tags
-        images: images.split(",").map((image) => image.trim()), // Convertir a array de imágenes
+        tags,
       },
     ])
-    .single(); // Insertamos un solo producto
+    .single();
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
   return NextResponse.json(data, { status: 201 });
+}
+
+export async function GET() {
+  const products = await supabase.from("products").select();
+  console.log(products);
+
+  return NextResponse.json(products, { status: 201 });
 }
