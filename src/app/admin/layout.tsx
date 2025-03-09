@@ -20,7 +20,7 @@ export default function AdminDashboardLayout({
       <body className={`${geistSans.className} antialiased`}>
         <div className="flex">
           <NavbarAdmin />
-          <div className="">{children}</div>
+          <div className="p-5 w-full">{children}</div>
         </div>
       </body>
     </html>
