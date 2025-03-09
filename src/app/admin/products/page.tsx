@@ -53,7 +53,7 @@ export default function ProductsAdminPage() {
         </div>
         <Link
           className="bg-black text-white rounded px-3 py-2"
-          href={"/addproduct"}
+          href={"/admin/products/add-product"}
         >
           + Add product
         </Link>
