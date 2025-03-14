@@ -1,4 +1,6 @@
-import { Collection, Newsletter } from "@/components";
+import { Newsletter } from "@/components";
+import Collection from "@/components/homepage/Collection";
+
 export default function Home() {
   return (
     <>

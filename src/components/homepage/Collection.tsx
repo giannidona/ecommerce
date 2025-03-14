@@ -3,7 +3,21 @@ import { Card } from "@/components";
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
 
-export const Collection = () => {
+type Prod = {
+  id: string;
+  name: string;
+  price: number;
+  tag: string;
+  image: string;
+};
+
+export default async function Collection() {
+  const res = await fetch("http://localhost:3000/api/products", {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
   return (
     <section className="my-10">
       <div>
@@ -16,10 +30,15 @@ export const Collection = () => {
         </p>
       </div>
       <div className="md:grid md:grid-cols-2 2xl:grid-cols-4">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data.data.map((prod: Prod) => (
+          <Card
+            key={prod.id}
+            prodName={prod.name}
+            prodPrice={prod.price}
+            prodTag={prod.tag}
+            prodImage={prod.image}
+          />
+        ))}
       </div>
       <Link
         className="group flex items-center align-middle justify-center gap-x-3 w-fit mx-auto text-sm"
@@ -32,4 +51,4 @@ export const Collection = () => {
       </Link>
     </section>
   );
-};
+}

@@ -7,7 +7,7 @@ const supabase = createClient(
 );
 
 export async function POST(req: Request) {
-  const { name, description, price, stock, tags } = await req.json();
+  const { name, description, price, stock, tag, image } = await req.json();
 
   if (!name || !price || !stock) {
     return NextResponse.json(
@@ -24,7 +24,8 @@ export async function POST(req: Request) {
         description,
         price,
         stock,
-        tags,
+        tag,
+        image,
       },
     ])
     .single();

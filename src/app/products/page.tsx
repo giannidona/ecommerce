@@ -1,5 +1,13 @@
 import { Card } from "@/components";
 
+type Prod = {
+  id: string;
+  name: string;
+  price: number;
+  tag: string;
+  image: string;
+};
+
 export default async function PorductsPage() {
   const res = await fetch("http://localhost:3000/api/products", {
     method: "GET",
@@ -14,12 +22,13 @@ export default async function PorductsPage() {
         <div>Filter system</div>
       </div>
       <div className="grid grid-cols-4 gap-x-5">
-        {data.data.map((prod) => (
+        {data.data.map((prod: Prod) => (
           <Card
             key={prod.id}
             prodName={prod.name}
             prodPrice={prod.price}
-            prodTag={prod.tags}
+            prodTag={prod.tag}
+            prodImage={prod.image}
           />
         ))}
       </div>

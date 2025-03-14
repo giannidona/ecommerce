@@ -10,7 +10,8 @@ export default function AddProductPage() {
     description: "",
     price: "",
     stock: "",
-    tags: "",
+    tag: "",
+    image: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +41,8 @@ export default function AddProductPage() {
         description: "",
         price: "",
         stock: "",
-        tags: "",
+        tag: "",
+        image: "",
       });
     } else {
       alert("Error: " + data.error);
@@ -74,7 +76,6 @@ export default function AddProductPage() {
             />
           </div>
 
-          {/* Campo de descripción como textarea */}
           <div className="flex flex-col">
             <label className="text-sm font-medium">Description</label>
             <textarea
@@ -114,16 +115,26 @@ export default function AddProductPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm font-medium">
-              Tags (comma separated)
-            </label>
+            <label className="text-sm font-medium">Tag</label>
             <input
               type="text"
               placeholder="e.g. electronics, gadgets, accessories"
-              value={form.tags}
+              value={form.tag}
               onChange={handleChange}
               required
-              name="tags"
+              name="tag"
+              className="border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className="text-sm font-medium">Product Image</label>
+            <input
+              type="text"
+              placeholder="URL only"
+              value={form.image}
+              onChange={handleChange}
+              name="image"
               className="border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
